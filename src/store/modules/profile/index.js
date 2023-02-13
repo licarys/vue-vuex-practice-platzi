@@ -1,5 +1,5 @@
 import { getUser } from '@/api/index.js'
-import { COMMIT_UPDATE_USERNAME } from '@/commons/mutation-types.js'
+import { COMMIT_UPDATE_USERNAME, COMMIT_SET_STATUS } from '@/commons/mutation-types.js'
 
 /**
  * To enable namespace for the module and use it globally
@@ -28,7 +28,8 @@ const module = {
       console.log('status ', rootState.status)
       commit(COMMIT_UPDATE_USERNAME, user.username)
       if(state.username) {
-        commit('setStatus', 'active', { root: true })
+        // commit('session/setStatus', 'active', { root: true })
+        commit(COMMIT_SET_STATUS, 'active', { root: true })
       }
       
     }

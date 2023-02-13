@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import profile from '@/store/modules/profile/'
+import { COMMIT_SET_STATUS } from '../commons/mutation-types'
 
 const store = createStore({
   state() {
@@ -13,7 +14,7 @@ const store = createStore({
     }
   },
   mutations: {
-    setStatus(state, status) {
+    [COMMIT_SET_STATUS](state, status) {
       state.status = status
     }
   },
