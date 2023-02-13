@@ -1,7 +1,11 @@
 import { getUser } from '@/api/index.js'
 import { COMMIT_UPDATE_USERNAME } from '@/commons/mutation-types.js'
 
+/**
+ * To enable namespace for the module and use it globally
+ */
 const module = {
+  namespaced: true,
   state() {
     return {
       username: 'temp'
@@ -13,7 +17,7 @@ const module = {
     }
   },
   mutations: {
-    updateUsername(state, username) {
+    [COMMIT_UPDATE_USERNAME](state, username) {
       state.username = username
     }
   },

@@ -32,14 +32,8 @@ export default {
     }
   },
   computed: {
-     ...mapState({
-      username: (state) => state.profile.username
-    }),
-    ...mapGetters(['otherFirstName', 'firstName'])
+    ...mapGetters('profile', ['firstName'])
   },
-  mounted() {
-    console.log('otherFirstName ', this.otherFirstName('-'))
-  }
 }
 </script>
 

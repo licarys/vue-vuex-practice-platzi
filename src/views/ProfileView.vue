@@ -9,8 +9,8 @@ export default {
     }),
   },
   methods: {
-    ...mapMutations(['updateUsername']),
-    ...mapActions(['updateUsername']),
+    ...mapMutations('profile', ['updateUsername']),
+    ...mapActions('profile', ['updateUsername']),
   }
 }
 </script>
