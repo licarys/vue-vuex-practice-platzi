@@ -1,13 +1,14 @@
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: {
     ...mapState(['username']),
   },
   methods: {
-    ...mapMutations(['updateUsername'])
+    ...mapMutations(['updateUsername']),
+    ...mapActions(['updateUsername']),
   }
 }
 </script>
@@ -19,7 +20,7 @@ export default {
       <label for="username">Nombre de usuario</label>
       <input type="text" placeholder="Jane Smith" 
         :value="username"
-        @input="$store.dispatch('updateUsername', $event.target.value)"/>
+        @input="updateUsername($event.target.value)"/>
       <button>Acceder</button>
     </div>
   </div>
