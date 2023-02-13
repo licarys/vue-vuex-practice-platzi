@@ -18,7 +18,6 @@ export default {
       search: '',
       profile: {
         username: 'Diana.Nerd',
-        status: 'active',
         avatar: '/avatars/avatar.jpg'
       },
       channels: [
@@ -32,7 +31,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('profile', ['firstName'])
+    ...mapGetters('profile', ['firstName']),
+    ...mapState(['status'])
   },
 }
 </script>
@@ -44,7 +44,7 @@ export default {
     <ProfileCard
       :avatar="profile.avatar"
       :username="firstName(' ')"
-      :status="profile.status"
+      :status="status"
     />
     <RouterLink to="/" class="channels-title">Canales <Icon icon="carbon:hashtag" /></RouterLink>
     <div class="channels">

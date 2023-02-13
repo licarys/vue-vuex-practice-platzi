@@ -8,7 +8,7 @@ const module = {
   namespaced: true,
   state() {
     return {
-      username: 'temp'
+      username: ''
     }
   },
   getters: {
@@ -22,10 +22,15 @@ const module = {
     }
   },
   actions: {
-    async updateUsername({ commit }, username) {
+    async updateUsername({ commit, state, rootState }, username) {
       const user = await getUser(1)
       console.log('getUser ', user)
+      console.log('status ', rootState.status)
       commit(COMMIT_UPDATE_USERNAME, user.username)
+      if(state.username) {
+        commit('setStatus', 'active', { root: true })
+      }
+      
     }
   },
 }

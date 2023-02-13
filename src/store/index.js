@@ -3,14 +3,20 @@ import profile from '@/store/modules/profile/'
 
 const store = createStore({
   state() {
-    return {}
+    return {
+      status: null
+    }
   },
   getters: {
     otherFirstName:(state, getters, rootState)  => (c) => {
       return rootState.profile.username.split('').join(c)
     }
   },
-  mutations: {},
+  mutations: {
+    setStatus(state, status) {
+      state.status = status
+    }
+  },
   actions: {},
   modules: {
     profile
