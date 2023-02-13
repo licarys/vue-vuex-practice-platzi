@@ -31,9 +31,7 @@ export default {
       ],
     }
   },
-  computed: mapState({
-    username: (state) => state.username
-  })
+  computed: mapState(['username'])
 }
 </script>
 
