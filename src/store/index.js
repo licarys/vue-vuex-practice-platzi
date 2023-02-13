@@ -8,7 +8,7 @@ const store = createStore({
   },
   getters: {
     firstName:(state)  => (c) => {
-      return state.username.split('').reverse().join(c)
+      return state.username.split('').join(c)
     }
   },
   mutations: {
