@@ -3,6 +3,7 @@ import { RouterView, RouterLink } from 'vue-router'
 import InputSearch from '@/components/InputSearch.vue'
 import ProfileCard from '@/components/ProfileCard.vue'
 import ChatItem from '@/components/ChatItem.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -30,11 +31,9 @@ export default {
       ],
     }
   },
-  computed: {
-    username() {
-      return this.$store.state.username
-    }
-  }
+  computed: mapState({
+    username: (state) => state.username
+  })
 }
 </script>
 
