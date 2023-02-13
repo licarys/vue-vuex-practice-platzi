@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      search: '',
+      query: '',
       profile: {
         username: 'Diana.Nerd',
         avatar: '/avatars/avatar.jpg'
@@ -31,8 +31,9 @@ export default {
     }
   },
   computed: {
+    ...mapState(['status']),
     ...mapGetters('profile', ['firstName']),
-    ...mapState(['status'])
+    ...mapGetters('channels', ['getChannels']),
   },
 }
 </script>
@@ -40,7 +41,7 @@ export default {
 <template>
 <div class="home">
   <aside>
-    <InputSearch v-model="search" />
+    <InputSearch v-model="query" />
     <ProfileCard
       :avatar="profile.avatar"
       :username="firstName(' ')"
@@ -49,11 +50,11 @@ export default {
     <RouterLink to="/" class="channels-title">Canales <Icon icon="carbon:hashtag" /></RouterLink>
     <div class="channels">
       <ChatItem
-        v-for="channel in channels"
+        v-for="channel in getChannels(query)"
         :key="channel.id"
         :id="channel.id"
         :name="channel.name"
-        :messages="channel.messages"
+        :messages="channel.messages.length"
       />
     </div>
   </aside>
