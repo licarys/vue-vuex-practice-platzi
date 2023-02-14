@@ -1,5 +1,6 @@
 <script>
 import MessageItem from '@/components/MessageItem.vue'
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -7,6 +8,7 @@ export default {
   },
   data() {
     return {
+      channelId: null,
       title: 'Nombre del canal',
       people: [
         { id: 1, name: 'Tú', avatar: '/avatars/avatar.jpg' },
@@ -14,7 +16,7 @@ export default {
         { id: 3, name: 'Janet', avatar: '/avatars/avatar-03.jpg' }
       ],
       messages: [
-        { id: 1, author: 1, message: 'Hola 👀', timestamp: new Date().toLocaleTimeString() },
+        { id: 1, author: 1, message: 'Hola 👀', timestamp: new Date().toLocaleTimeString(), read: false },
         { id: 2, author: 2, message: 'Holaaa!!!', timestamp: new Date().toLocaleTimeString() },
         { id: 3, author: 3, message: 'Hola a todo el mundo 😊', timestamp: new Date().toLocaleTimeString() },
         { id: 4, author: 3, message: '¿Cómo están?', timestamp: new Date().toLocaleTimeString() },
@@ -29,8 +31,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('messages', ['getMessages']),
     messagesView() {
-      return this.messages.map((message) => {
+      return this.getMessages(this.channelId)?.map((message) => {
         const author = this.people.find((p) => p.id === message.author)
         if (!author) return message;
         return {
@@ -39,12 +42,13 @@ export default {
           self: author.id === 1
         }
       })
-    }
+    },
   },
   watch: {
     '$route.params.id': {
       immediate: true,
-      handler() {
+      handler(id) {
+        this.channelId = id
         this.scrollToBottom()
       }
     }
