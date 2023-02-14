@@ -23,7 +23,15 @@ const module = {
         },
         {
           id: 3,
-          author: 2,
+          author: 3,
+          message: 'Hola 👀',
+          timestamp: new Date().toLocaleTimeString(),
+          read: false,
+          channelId: 2
+        },
+        {
+          id: 4,
+          author: 1,
           message: 'Hola 👀',
           timestamp: new Date().toLocaleTimeString(),
           read: false,

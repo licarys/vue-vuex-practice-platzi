@@ -8,7 +8,13 @@ const module = {
   namespaced: true,
   state() {
     return {
-      username: ''
+      id: 1,
+      username: '',
+      details: {
+        id: 1,
+        name: 'Lili',
+        avatar: 'avatars/avatar.jpg'
+      }
     }
   },
   getters: {
